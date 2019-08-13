@@ -41,8 +41,11 @@ export default function ({ types: t }) {
               t.stringLiteral(identity),
             ),
           ];
+          const property = argument.openingElement.name.property;
 
-          argument.openingElement.attributes.push(...newAttributes);
+          if (!property || property.name !== "Fragment") {
+            argument.openingElement.attributes.push(...newAttributes);
+          }
         }
       },
     },
